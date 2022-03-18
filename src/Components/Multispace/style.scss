@@ -1,0 +1,19 @@
+$mediumPurple: #8f7fff;
+$lavenderGray: #b6b4c6;
+$gunmetal: #242b35;
+$richBlack: #171e28;
+$mediumPurpleT: #8f7fff26;
+$charcoal: #3d444e;
+$lavenderBlue: #c7bfff;
+$white: #fff;
+$red: #ff6a59;
+$green: #27ae60;
+
+.imageWrapper {
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

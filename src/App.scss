@@ -1,0 +1,296 @@
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*--------------------*/
+$mediumPurple: #8f7fff;
+$lavenderGray: #b6b4c6;
+$gunmetal: #242b35;
+$richBlack: #171e28;
+$mediumPurpleT: #8f7fff26;
+$charcoal: #3d444e;
+$davysGray: #50555D;
+$lavenderBlue: #c7bfff;
+$white: #fff;
+$red: #ff6a59;
+$green: #27ae60;
+$gradient: linear-gradient(180deg, rgba(191, 186, 250, 1) 10%, rgba(143, 127, 255, 1) 50%, rgba(98, 75, 255, 1) 87%);
+$gradientT: linear-gradient(
+  180deg,
+  rgba(191, 186, 250, 0.5) 10%,
+  rgba(144, 127, 255, 0.5) 50%,
+  rgba(98, 75, 255, 0.5) 87%
+);
+
+$textSmall: 0.85em;
+$textRegular: 1em;
+$textLarge: 1.15em;
+
+.text {
+  &--small {
+    font-size: 0.85em;
+    line-height: 18px;
+  }
+
+  &--regular {
+    font-size: 1em;
+    line-height: 21px;
+  }
+
+  &--large {
+    font-size: 1.15em;
+    line-height: 22px;
+  }
+
+  &--600 {
+    font-weight: 600;
+  }
+
+  &--700 {
+    font-weight: 700;
+  }
+
+  &--lavenderGray {
+    color: $lavenderGray;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  &--lavenderBlue {
+    color: $lavenderBlue;
+  }
+
+  &--red {
+    color: $red;
+  }
+
+  &--green {
+    color: $green;
+  }
+
+  &--mediumPurple {
+    color: $mediumPurple;
+  }
+}
+
+.svg {
+  &--green {
+    path {
+      // stroke: $green;
+    }
+  }
+
+  &--lavenderGray {
+    path {
+      fill: $lavenderGray;
+    }
+  }
+
+  &--mdiumPurple {
+    path {
+      fill: $mediumPurple;
+    }
+  }
+}
+
+.showMore {
+  font-size: $textSmall;
+  color: $mediumPurple;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tag {
+  padding: 3px 12px;
+  border-radius: 15px;
+  border: 1px solid $mediumPurple;
+}
+
+.label {
+  position: relative;
+  color: $white;
+  padding: 3px 12px 3px 20px;
+  margin-left: 8px;
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  clip-path: polygon(15% 0, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+  background: linear-gradient(90deg, #544cba 0%, #7b75cb 100%);
+}
+
+.button {
+  padding: 10px 28px;
+  border-radius: 7px;
+  background-color: inherit;
+  border: 1px solid $mediumPurple;
+  color: $mediumPurple;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $mediumPurple;
+    color: $white;
+  }
+}
+
+.pageButton {
+  &--active {
+    svg {
+      path {
+        stroke: $white;
+      }
+    }
+  }
+
+  &--disabled {
+    svg {
+      path {
+        stroke: $davysGray;
+      }
+    }
+  }
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+
+  & + label {
+    position: relative;
+    margin-left: 25px;
+  }
+
+  & + label::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    bottom: -2px;
+    left: -25px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid $lavenderGray;
+    border-radius: 0.25em;
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:checked + label::before {
+    background-color: $mediumPurple;
+    border-color: $mediumPurpleT;
+    background-image: url("./Images/check.png");
+  }
+}
+
+.select {
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 1px solid $charcoal;
+  background-color: $gunmetal;
+}
+
+.table {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  position: absolute;
+  left: 0;
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background: $gradientT;
+
+  &:hover {
+    background: $gradient;
+  }
+}
+
+body {
+  font-size: 14px;
+  background-color: $richBlack;
+}
