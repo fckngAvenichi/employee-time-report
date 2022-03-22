@@ -1,0 +1,28 @@
+@use '../tools';
+
+$textSmall: 0.85em;
+$textRegular: 1em;
+$textLarge: 1.15em;
+
+$sizes: ('small': 0.85em, 'regular': 1em, 'large': 1.15em);
+$weights: ('600': 600, '700': 700);
+$colors: ('lavenderBlue': $lavenderBlue, 'lavenderGray': $lavenderGray, 'white': $white, 'red': $red, 'green': $green, 'mediumPurple': $mediumPurple);
+
+@each $name, $value in $sizes {
+  .text--#{$name} {
+    font-size: $value;
+    line-height: $value;
+  }
+}
+
+@each $name, $value in $weights {
+  .text--#{$name} {
+    font-weight: $value;
+  }
+}
+
+@each $name, $value in $colors {
+  .text--#{$name} {
+    color: $value
+  }
+}
