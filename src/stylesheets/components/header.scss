@@ -1,1 +1,117 @@
- 
+@use "../tools" as *;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background-color: $gunmetal;
+
+  &__logo {
+    padding: 0 3%;
+  }
+
+  &__navbar {
+    flex-grow: 1;
+  }
+
+  &__burger {
+    display: none;
+
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    &:hover {
+      background-color: $mediumPurpleT;
+
+      svg > path {
+        stroke: $mediumPurple;
+      }
+    }
+  }
+
+  &__profile {
+    padding: 0 3%;
+
+    .imageWrapper {
+      height: 44px;
+      width: 44px;
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  &__link > a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 25px 20px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover, &:focus {
+      @include baseTransition;
+      background-color: $mediumPurpleT;
+
+      span {
+        color: $mediumPurple;
+      }
+
+      svg > path {
+        fill: $mediumPurple;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: $gradient;
+        border-radius: 0px 0px 2px 2px;
+        position: absolute;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .header {
+  }
+
+  .navbar {
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    &__burger {
+      display: block;
+    }
+  }
+
+  .navbar {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background-color: $gunmetal;
+    top: 60px;
+    right: 0;
+    width: 250px;
+    box-shadow: -10px 10px 10px $richBlack;
+    @include baseTransition;
+  }
+}

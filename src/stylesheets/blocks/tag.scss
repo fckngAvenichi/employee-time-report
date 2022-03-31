@@ -1,0 +1,26 @@
+@use "../tools" as *;
+
+$tags: (
+  "purple": $mediumPurple,
+);
+
+@mixin tag($bgColor: inherit, $textColor: inherit) {
+  padding: 3px 12px;
+  border-radius: 15px;
+  background-color: $bgColor;
+  font-size: $textSmall;
+  font-weight: 400;
+  line-height: $lineHeigthSmall;
+  color: $textColor;
+}
+
+@each $name, $value in $tags {
+  .tag--#{$name} {
+    @include tag($value, $white);
+  }
+
+  .tag--outlined--#{$name} {
+    @include baseBorder($value);
+    @include tag;
+  }
+}

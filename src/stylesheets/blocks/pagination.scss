@@ -1,0 +1,16 @@
+@use '../../stylesheets/tools' as *;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 10px;
+  @include baseBorder($charcoal);
+  border-radius: $baseBorderRadius;
+  background-color: $gunmetal;
+  gap: 5px;
+
+  .page-link {
+    padding: 2px 8px;
+  }
+}

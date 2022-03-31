@@ -1,0 +1,11 @@
+@use "../../stylesheets/tools" as *;
+
+.showMore {
+  font-size: $textSmall;
+  color: $mediumPurple;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

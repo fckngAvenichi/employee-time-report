@@ -1,0 +1,23 @@
+@use "../tools" as *;
+
+$labels: (
+  "purple": linear-gradient(90deg, #544cba 0%, #7b75cb 100%),
+);
+
+@mixin label($bgColor: inherit) {
+  padding: 3px 12px 3px 20px;
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  clip-path: polygon(15% 0, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
+  background: $bgColor;
+  font-size: $textSmall;
+  font-weight: 400;
+  line-height: $lineHeigthSmall;
+  color: $white;
+}
+
+@each $name, $value in $labels {
+  .label--#{$name} {
+    @include label($value);
+  }
+}

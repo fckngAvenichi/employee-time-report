@@ -1,1 +1,227 @@
- 
+@use "../tools" as *;
+
+$gridGap: 40px;
+
+.info {
+  display: grid;
+  grid-template-areas: "information time" "efficiency efficiency";
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 10px 40px 64px;
+    background-color: $gunmetal;
+    border-radius: $baseBorderRadius;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 8px;
+      height: 50%;
+      top: 25%;
+      left: 0;
+      border-radius: 0 7px 7px 0;
+      background: $gradient;
+    }
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__main {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 54px;
+  }
+
+  table {
+    border-collapse: collapse;
+    font-size: $textRegular;
+    line-height: $lineHeigthRegular;
+
+    tr {
+      border-top: 1px solid $charcoal;
+      border-bottom: 1px solid $charcoal;
+    }
+
+    tr:nth-child(1) {
+      border-top: none;
+    }
+
+    tr:nth-last-child(1) {
+      border-bottom: none;
+    }
+
+    span {
+      width: 100%;
+      display: block;
+      padding: 8px 0;
+    }
+  }
+
+  &__table--main {
+    width: 100%;
+    font-weight: 700;
+  }
+
+  &__table--secondary {
+    float: right;
+    width: 90%;
+    font-weight: 400;
+  }
+
+  &__table--twocolumns {
+    td:nth-child(1) {
+      text-align: left;
+    }
+
+    td:nth-child(2) {
+      text-align: right;
+    }
+  }
+
+  &__table--threecolumns {
+    td:nth-child(1) {
+      text-align: left;
+    }
+
+    td:nth-child(2) {
+      text-align: center;
+    }
+
+    td:nth-child(3) {
+      text-align: right;
+    }
+  }
+
+  &__item--information {
+    grid-area: information;
+
+    .info__main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      span {
+        display: block;
+        text-align: justify;
+
+        &:nth-child(1) {
+          min-width: 125px;
+        }
+      }
+    }
+  }
+
+  &__item--time {
+    grid-area: time;
+
+    .info__main {
+      display: grid;
+      grid-template-areas: "total current" "total estimation";
+      grid-template-columns: 1fr 1fr;
+      gap: $gridGap;
+
+      & > section {
+        &:nth-child(1) {
+          grid-area: total;
+        }
+
+        &:nth-child(2) {
+          grid-area: current;
+        }
+
+        &:nth-child(3) {
+          grid-area: estimation;
+        }
+      }
+    }
+  }
+
+  &__item--efficiency {
+    grid-area: efficiency;
+
+    .info__main {
+      display: grid;
+      grid-template-areas: "total current";
+      grid-template-columns: 1fr 1fr;
+      gap: $gridGap;
+
+      & > section {
+        &:nth-child(1) {
+          grid-area: total;
+        }
+
+        &:nth-child(2) {
+          grid-area: current;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .info {
+    width: 100%;
+    &__item--time {
+      .info__main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) and (min-width: 426px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 425px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__item {
+      padding: 20px 5px 20px 32px;
+    }
+
+    &__main {
+      padding-right: 22px;
+    }
+
+    &__item--information {
+      section {
+        span {
+          &:nth-child(1) {
+            min-width: 80px;
+          }
+        }
+      }
+    }
+
+    &__item--time, &__item--efficiency {
+      .info__main {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

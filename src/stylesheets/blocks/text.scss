@@ -1,17 +1,27 @@
-@use '../tools';
+@use "../tools" as *;
 
-$textSmall: 0.85em;
-$textRegular: 1em;
-$textLarge: 1.15em;
+$sizes: (
+  "small" $textSmall $lineHeigthSmall,
+  "regular" $textRegular $lineHeigthRegular,
+  "large" $textLarge $lineHeigthLarge
+);
+$weights: (
+  600: 600,
+  700: 700,
+);
+$colors: (
+  "lavenderBlue": $lavenderBlue,
+  "lavenderGray": $lavenderGray,
+  "white": $white,
+  "red": $red,
+  "green": $green,
+  "mediumPurple": $mediumPurple,
+);
 
-$sizes: ('small': 0.85em, 'regular': 1em, 'large': 1.15em);
-$weights: ('600': 600, '700': 700);
-$colors: ('lavenderBlue': $lavenderBlue, 'lavenderGray': $lavenderGray, 'white': $white, 'red': $red, 'green': $green, 'mediumPurple': $mediumPurple);
-
-@each $name, $value in $sizes {
+@each $name, $textSize, $lineHeigth in $sizes {
   .text--#{$name} {
-    font-size: $value;
-    line-height: $value;
+    font-size: $textSize;
+    line-height: $lineHeigth;
   }
 }
 
@@ -23,6 +33,6 @@ $colors: ('lavenderBlue': $lavenderBlue, 'lavenderGray': $lavenderGray, 'white':
 
 @each $name, $value in $colors {
   .text--#{$name} {
-    color: $value
+    color: $value;
   }
 }

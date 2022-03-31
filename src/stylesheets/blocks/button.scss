@@ -1,1 +1,27 @@
- 
+@use "../tools" as *;
+
+$buttons: (
+  "purple": $mediumPurple,
+);
+
+@mixin button($bgColor: inherit, $textColor: #fff) {
+  // padding: 10px 28px;
+  border-radius: $baseBorderRadius;
+  background: $bgColor;
+  color: $textColor;
+  font-size: $textRegular;
+  line-height: $lineHeigthRegular;
+  @include baseTransition;
+}
+
+@each $name, $value in $buttons {
+  .button--#{$name} {
+    @include baseBorder($value);
+    @include button($bgColor: $value);
+  }
+
+  .button--outlined--#{$name} {
+    @include baseBorder($value);
+    @include button($textColor: $value);
+  }
+}

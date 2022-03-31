@@ -1,0 +1,8 @@
+@use "../tools" as *;
+
+.select {
+  padding: 10px 15px;
+  border-radius: $baseBorderRadius;
+  @include baseBorder($charcoal);
+  background-color: $gunmetal;
+}
