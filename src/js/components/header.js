@@ -1,6 +1,6 @@
 import '../../stylesheets/components/header.scss'
 import avatar from '../../assets/images/avatar.png'
-import { Image } from '../blocks/image.js'
+import { Image } from '../blocks/image'
 import { useState } from 'react'
 
 const Header = () => {
@@ -94,9 +94,9 @@ const Header = () => {
       </div>
       <div className="header__burger" onClick={() => setIsNavbarShown(isNavbarShown => !isNavbarShown)}>
         <svg width="100" height="100" viewBox="0 0 100 100">
-          <path stroke='#b6b4c6' className="line line1" d="M 20,35.000046 H 80.000231 C 80.000231" />
+          <path stroke='#b6b4c6' className="line line1" d="M 20,35.000046 H 80.000231" />
           <path stroke='#b6b4c6' className="line line2" d="M 20,50 H 80" />
-          <path stroke='#b6b4c6' className="line line3" d="M 20,65.999954 H 80.000231 C 80.000231" />
+          <path stroke='#b6b4c6' className="line line3" d="M 20,65.999954 H 80.000231" />
         </svg>
       </div>
     </header>

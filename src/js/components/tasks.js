@@ -46,8 +46,8 @@ const TaskItem = ({ item }) => {
   return (
     <li className={`tasks__item`}>
       <span className='text--small text--mediumPurple'>{item.name}</span>
-      <span className='text--small'><span style={!isDevsVisible ? { height: '5%', overflow: 'none' } : { height: 'auto' }}>{devs && devs.map(item => <>{item}<br /></>)}</span>{devs && devs.length > 2 && <span onClick={() => setIsDevsVisible(isDevsVisible => !isDevsVisible)} className='showMore'>Show more</span>}</span>
-      <span className='text--small'>{workType && workType.map(item => <>{item}<br /></>)}{workType && workType.length > 2 && <span onClick={() => setIsWorkVisible(isWorkVisible => !isWorkVisible)} className='showMore'>Show more</span>}</span>
+      <span className='text--small'><span style={!isDevsVisible ? { height: '2.5rem' } : { height: 'auto' }}>{devs && devs.map(item => <>{item}<br /></>)}</span>{devs && devs.length > 2 && <span style={{ display: isDevsVisible ? 'none' : 'block' }} onClick={() => setIsDevsVisible(isDevsVisible => !isDevsVisible)} className='showMore'>Show more({devs.length - 2})</span>}</span>
+      <span className='text--small'><span style={!isWorkVisible ? { height: '2.5rem' } : { height: 'auto' }}>{workType && workType.map(item => <>{item}<br /></>)}</span>{workType && workType.length > 2 && <span style={{ display: isWorkVisible ? 'none' : 'block' }} onClick={() => setIsWorkVisible(isWorkVisible => !isWorkVisible)} className='showMore'>Show more({workType.length - 2})</span>}</span>
       <span className={(item.status ? 'text--green' : 'text--red') + ' text--small'}>{item.status ? 'Completed' : 'Non Completed'}</span>
       <span className='text--small'>{item.estimination.toFixed(1)}</span>
       <span className='text--small'>{item.totalTime.toFixed(2)}</span>

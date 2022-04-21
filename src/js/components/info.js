@@ -59,6 +59,7 @@ const Info = () => {
           <section>
             <h2 className='text--regular text--lavenderBlue'>Project information</h2>
             <table className="info__table--main info__table--twocolumns">
+              <thead></thead>
               <tbody>
                 <tr>
                   <td><span>Changes</span></td>
@@ -71,6 +72,7 @@ const Info = () => {
                 <tr>
                   <td colSpan={2}>
                     <table className="info__table--secondary info__table--twocolumns">
+                      <thead></thead>
                       <tbody>
                         <tr>
                           <td><span>Programming</span></td>
@@ -109,6 +111,7 @@ const Info = () => {
                           <td><span>8256.08h</span></td>
                         </tr>
                       </tbody>
+                      <tfoot></tfoot>
                     </table>
                   </td>
                 </tr>
@@ -117,6 +120,7 @@ const Info = () => {
                   <td><span>15236.48h</span></td>
                 </tr>
               </tbody>
+              <tfoot></tfoot>
             </table>
           </section>
           <section>

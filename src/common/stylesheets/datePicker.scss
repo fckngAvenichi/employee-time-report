@@ -1,0 +1,366 @@
+@use "../../stylesheets/tools" as *;
+
+$commonGap: 16px;
+$commonDayGapY: 10px;
+$commonDayGapX: 12px;
+$dayWidth: 24px;
+$dayHeight: 24px;
+$paddingTop: 20px;
+$paddingSide: 30px;
+
+.datePicker {
+  position: relative;
+
+  $svgWidth: 16px;
+  $svgHeight: 16px;
+  $datePickerItemGap: 12px;
+
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  svg {
+    width: $svgWidth;
+    height: $svgHeight;
+  }
+
+  &__spanSvg {
+    cursor: pointer;
+  }
+
+  &__container {
+    width: auto;
+    display: inline-flex;
+    gap: 16px;
+    height: 40px;
+    padding: 0 11px 0 16px;
+    background-color: $gunmetal;
+    border-radius: $baseBorderRadius;
+    @include baseBorder($charcoal);
+    @include baseTransition;
+
+    &:hover {
+      @include baseBorder($maximumPurple);
+    }
+
+    &:focus {
+      @include baseBorder($white);
+    }
+
+    &--opened {
+      border: 1px solid $mediumPurple !important;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: $datePickerItemGap;
+
+    &:nth-last-child(1)::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 100%;
+      right: $svgWidth + $datePickerItemGap;
+      border-right: 1px solid $charcoal;
+    }
+
+    input {
+      background-color: $gunmetal;
+    }
+  }
+
+  &__date {
+    display: block;
+    width: 130px;
+    background-color: inherit;
+    color: inherit;
+  }
+
+  &__picker {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    display: grid;
+    grid-template-areas: "periods inputs" "periods datepicker";
+    background-color: $gunmetal;
+    border-radius: $baseBorderRadius;
+    @include baseBorder($charcoal);
+  }
+
+  &__inputs {
+    grid-area: inputs;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 18px;
+
+    input {
+      width: 130px;
+      padding: 10px 20px;
+      background-color: $richBlack;
+      border-radius: $baseBorderRadius;
+      @include baseBorder($charcoal);
+      @include baseTransition;
+    }
+
+    input:focus {
+      @include baseBorder($mediumPurple);
+      color: $white;
+    }
+
+    input:hover {
+      @include baseBorder($maximumPurple);
+      color: $white;
+    }
+  }
+
+  &__periods {
+    grid-area: periods;
+    width: 190px;
+    padding: 20px 0;
+    border-right: 1px solid $charcoal;
+
+    li {
+      padding: 6px 31px;
+      cursor: pointer;
+      @include baseTransition;
+    }
+
+    li:nth-child(1):hover {
+      background-color: inherit;
+    }
+
+    li:hover {
+      background-color: $gunmetal2;
+    }
+  }
+
+  .react-datepicker {
+    grid-area: datepicker;
+    border-top: 1px solid $charcoal;
+  }
+}
+
+.react-datepicker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  padding: $paddingTop $paddingSide;
+  background-color: $gunmetal;
+
+  &__navigation--previous,
+  &__navigation--next {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: $mediumPurpleT3;
+    border-radius: 4px;
+    color: $white;
+  }
+
+  &__navigation--previous {
+    left: $paddingSide;
+  }
+
+  &__navigation--next {
+    right: $paddingSide;
+  }
+
+  &__month-container {
+    display: flex;
+    flex-direction: column;
+    gap: $commonGap;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $commonGap;
+
+    &__dropdown {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: $commonGap;
+
+      select {
+        width: 75px;
+        background-color: $gunmetal;
+        color: $white;
+        font-size: $textLarge;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__current-month {
+    display: none;
+  }
+
+  &__day-names {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: $commonDayGapY $commonDayGapX;
+    font-weight: 600;
+  }
+
+  &__day-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $dayWidth;
+    height: $dayHeight;
+    text-align: center;
+    color: $white;
+  }
+
+  &__month {
+    display: flex;
+    flex-direction: column;
+    gap: $commonDayGapY;
+  }
+
+  &__week {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: $commonDayGapX;
+
+    .react-datepicker__day {
+      &--in-range {
+        &:nth-child(1) {
+          border-radius: 50% 0 0 50%;
+          box-shadow: none;
+          box-shadow: calc($commonDayGapX / 2) 0 $mediumPurple;
+        }
+
+        &:nth-last-child(1) {
+          border-radius: 0 50% 50% 0;
+          box-shadow: none;
+          box-shadow: calc(-1 * $commonDayGapX / 2) 0 $mediumPurple;
+        }
+      }
+
+      &--in-selecting-range {
+        &:nth-child(1) {
+          border-radius: 50% 0 0 50%;
+          box-shadow: none;
+          box-shadow: calc($commonDayGapX / 2) 0 $mediumPurpleT2;
+        }
+
+        &:nth-last-child(1) {
+          border-radius: 0 50% 50% 0;
+          box-shadow: none;
+          box-shadow: calc(-1 * $commonDayGapX / 2) 0 $mediumPurpleT2;
+        }
+      }
+    }
+  }
+
+  .react-datepicker__day--range-start.react-datepicker__day--range-end.react-datepicker__day--in-range {
+    border-radius: 100%;
+    box-shadow: none;
+  }
+
+  .react-datepicker__day--range-start.react-datepicker__day--in-range:nth-last-child(1) {
+    border-radius: 100%;
+    box-shadow: none;
+  }
+
+  .react-datepicker__day--range-end.react-datepicker__day--in-range:nth-child(1) {
+    border-radius: 100%;
+    box-shadow: none;
+  }
+
+  .react-datepicker__day--selecting-range-start.react-datepicker__day--in-selecting-range:nth-last-child(1) {
+    border-radius: 100%;
+    box-shadow: none;
+  }
+
+  .react-datepicker__day--in-selecting-range:nth-child(1):hover {
+    box-shadow: none !important;
+    border-radius: 100%;
+  }
+
+  .react-datepicker__day--in-selecting-range:hover {
+    border-radius: 0 50% 50% 0;
+    box-shadow: calc(-1 * $commonDayGapX / 2) 0 $mediumPurpleT2;
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $dayWidth;
+    height: $dayHeight;
+    text-align: center;
+    color: $white;
+    cursor: pointer;
+    @include baseTransition;
+
+    &:hover {
+      background-color: $gunmetal2;
+      border-radius: 100%;
+    }
+
+    &--in-range:hover {
+      border-radius: 0;
+    }
+
+    &--range-start:hover {
+      border-radius: 50% 0 0 50%;
+    }
+
+    &--range-end:hover {
+      border-radius: 0 50% 50% 0;
+    }
+
+    &--selected {
+      background-color: $mediumPurple;
+      border-radius: 100%;
+    }
+
+    &--in-range {
+      background-color: $mediumPurple;
+      box-shadow: $commonDayGapX 0 $mediumPurple, -$commonDayGapX 0 $mediumPurple;
+    }
+
+    &--range-start {
+      background-color: $mediumPurple;
+      border-radius: 50% 0 0 50%;
+      box-shadow: calc($commonDayGapX / 2) 0 $mediumPurple;
+    }
+
+    &--range-end {
+      background-color: $mediumPurple;
+      border-radius: 0 50% 50% 0;
+      box-shadow: calc(-1 * $commonDayGapX / 2) 0 $mediumPurple;
+    }
+
+    &--in-selecting-range {
+      background-color: $mediumPurpleT2;
+      box-shadow: calc($commonDayGapX / 2) 0 $mediumPurpleT2, calc(-1 * $commonDayGapX / 2) 0 $mediumPurpleT2;
+    }
+
+    &--selecting-range-start {
+      box-shadow: calc($commonDayGapX / 2) 0 $mediumPurpleT2;
+      border-radius: 50% 0 0 50%;
+    }
+
+    &--outside-month {
+      color: $whiteT;
+    }
+  }
+}

@@ -43,6 +43,11 @@ $gap: 8px;
     background-color: $gunmetal1;
 
     & > span {
+      & > span {
+        display: block;
+        overflow: hidden;
+      }
+
       &:nth-child(1),
       &:nth-child(2) {
         width: 12.5%;
